@@ -35,7 +35,7 @@ const Generator = () => {
         id: window.crypto.randomUUID(),
         date: new Date(),
         lyrics: lyrics,
-        story: story,
+        story: data?.generated_story,
       }
 
       const existingStories = JSON.parse(localStorage.getItem('stories') || '[]')
