@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  .btn {
+    @apply flex justify-center items-center p-1 text-sm border border-gray-200 rounded-md bg-gray-100 cursor-pointer ease-in hover:translate-y-[1px];
+  }
+}
+
+@layer components {
+  .btn-pink {
+    @apply hover:bg-pink-100 hover:border-pink-200 active:bg-pink-200;
+  }
+
+  .btn-blue {
+    @apply hover:bg-sky-100 hover:border-sky-200 active:bg-sky-200;
+  }
+
+  .btn-blue-active {
+    @apply bg-sky-200 border-sky-300;
+  }
+}
