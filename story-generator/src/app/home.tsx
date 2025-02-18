@@ -1,4 +1,4 @@
-function App() {
+function HomePage() {
   return (
     <>
       <div className="text-blue-300 text-3xl">test😃</div>
@@ -6,4 +6,4 @@ function App() {
   )
 }
 
-export default App
+export default HomePage
