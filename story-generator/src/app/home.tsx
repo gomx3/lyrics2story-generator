@@ -2,20 +2,12 @@ import { useState } from 'react'
 import InputBox from '../components/generator/input'
 import HistoryCard from '../components/history/card'
 import postLyrics from '../apis/postLyrics'
+import { emotions } from '../constants'
 
 const Generator = () => {
   const [lyrics, setLyrics] = useState<string>('')
   const [story, setStory] = useState<string>('')
   const [selectedEmotions, setSelectedEmotions] = useState<number[]>([])
-
-  const emotions = [
-    { index: 0, label: '기쁨' },
-    { index: 1, label: '당황' },
-    { index: 2, label: '분노' },
-    { index: 3, label: '불안' },
-    { index: 4, label: '상처' },
-    { index: 5, label: '슬픔' },
-  ]
 
   // 감정 선택 핸들러
   const handleEmotionSelect = (index: number) => {
@@ -30,6 +22,7 @@ const Generator = () => {
     })
   }
 
+  // 이야기 생성 버튼 핸들러
   const handleGenerateClick = async () => {
     const prompt: string = `${selectedEmotions[0]} | ${selectedEmotions[1]} | ` + lyrics
 
