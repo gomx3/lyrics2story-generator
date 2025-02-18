@@ -4,9 +4,9 @@ interface InputBoxProps {
 
 const InputBox: React.FC<InputBoxProps> = ({ label }) => {
   return (
-    <div className="w-full">
+    <div>
       <div className="text-m text-gray-800 dark:text-white">{label}</div>
-      <textarea className="resize-none border rounded focus:outline-none" />
+      <textarea className="w-full h-full p-2 resize-none border rounded-md tansition focus:outline-none placeholder:text-gray-400" />
     </div>
   )
 }
