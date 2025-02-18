@@ -1,14 +1,22 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import InputBox from '../components/generator/input'
 import HistoryCard from '../components/history/card'
+import postLyrics from '../apis/postLyrics'
 
 const Generator = () => {
   const [lyrics, setLyrics] = useState<string>('')
-  const story: string = ''
+  const [story, setStory] = useState<string>('')
 
-  useEffect(() => {
-    console.log(lyrics)
-  }, [lyrics])
+  const handleGenerateClick = async () => {
+    const prompt: string = '0 | 3 | ' + lyrics
+
+    try {
+      const data = await postLyrics(prompt)
+      setStory(data?.generated_story)
+    } catch (error) {
+      console.error('API 요청 실패:', error)
+    }
+  }
 
   return (
     <div className="flex flex-col justify-center w-2/3 gap-2">
@@ -21,7 +29,10 @@ const Generator = () => {
           placeholder="이야기로 재바꿈하고픈 가사를 입력하세요"
         />
       </div>
-      <button className="self-end flex justify-center items-center p-1 w-20 text-sm border border-gray-200 rounded-md bg-gray-100 hover:bg-pink-100 hover:border-pink-200 hover:translate-y-[1px] active:bg-pink-200 cursor-pointer ease-in">
+      <button
+        className="self-end flex justify-center items-center p-1 w-20 text-sm border border-gray-200 rounded-md bg-gray-100 hover:bg-pink-100 hover:border-pink-200 hover:translate-y-[1px] active:bg-pink-200 cursor-pointer ease-in"
+        onClick={() => handleGenerateClick()}
+      >
         generate
       </button>
       <InputBox value={story} label="new story is here! 😃" placeholder="0.<" />
