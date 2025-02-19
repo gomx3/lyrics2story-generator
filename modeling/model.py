@@ -224,10 +224,10 @@ def generate_story(lyrics_input):
         input_ids, 
         max_new_tokens=150, # 새로 생성할 토큰의 개수를 제한
         num_return_sequences=1, 
-        temperature=0.8, 
-        top_k=50, 
-        top_p=0.9, 
-        repetition_penalty=1.2, 
+        temperature=0.8, # 출력의 다양성을 조절 (낮으면 더 결정적, 높으면 더 창의적)
+        top_k=50, # 생성 확률을 조절해 고유한 텍스트를 생성
+        top_p=0.9, # 생성 확률을 조절해 고유한 텍스트를 생성
+        repetition_penalty=1.2, # 같은 단어 반복을 방지
         do_sample=True  # 샘플링 활성화
     )
 
